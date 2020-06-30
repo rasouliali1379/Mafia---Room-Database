@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true"
+    tools:context=".AddAbilityActivity">
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:animateLayoutChanges="true"
+                android:padding="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/add_ability_powers"
+                    android:textSize="20dp" />
+                <LinearLayout
+                    android:padding="15dp"
+                    android:layout_weight="1"
+                    android:id="@+id/power_selector_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_start_game"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/power_selector_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/add_ability_pick_power"
+                        android:textColor="@android:color/black"
+                        android:textSize="18dp" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/add_ability_power_remove_selection"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_close"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/power_select_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone"
+                android:text="@string/add_ability_select_error"/>
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/power_against"
+                    android:textSize="20dp" />
+                <LinearLayout
+                    android:padding="15dp"
+                    android:layout_weight="1"
+                    android:id="@+id/power_against_selector_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_start_game"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/power_against_selector_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/add_ability_pick_power"
+                        android:textColor="@android:color/black"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="18dp" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/add_ability_power_against_remove_selection"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_close"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/power_action_label"
+                    android:textSize="20dp" />
+                <LinearLayout
+                    android:padding="15dp"
+                    android:layout_weight="1"
+                    android:id="@+id/power_action_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_start_game"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/power_action_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/power_action_define_tv"
+                        android:textColor="@android:color/black"
+                        android:textSize="18dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:layout_marginEnd="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/add_ability_by_default_cb"
+                    android:textSize="18dp"
+                    android:text="@string/by_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <CheckBox
+                    android:textSize="18dp"
+                    android:id="@+id/add_ability_day_or_night_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/add_power_night_title"
+                    />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_ability_by_default_cv"
+                android:layout_margin="10dp"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="15dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/add_ability_power_per_day_title"
+                            android:textSize="20dp" />
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/power_per_day_et"
+                                android:inputType="number"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:padding="15dp"
+                                android:background="@drawable/bg_start_game"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="30dp"
+                            android:layout_weight="1"
+                            android:text="@string/add_ability_power_ratio_title"
+                            android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:text="1"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"/>
+                            <LinearLayout
+                                android:layout_gravity="center"
+                                android:layout_width="80dp"
+                                android:layout_height="1dp"
+                                android:orientation="vertical"
+                                android:background="@android:color/black"/>
+
+                            <EditText
+                                android:id="@+id/power_scale_et"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bg_start_game"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:textSize="20dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/add_ability_health"
+                            android:textSize="20dp" />
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/power_health_et"
+                                android:inputType="number"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:padding="15dp"
+                                android:background="@drawable/bg_start_game"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/add_ability_day_coefficient"
+                            android:textSize="20dp" />
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/power_day_coefficient_et"
+                                android:inputType="number"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:padding="15dp"
+                                android:background="@drawable/bg_start_game"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/add_ability_execution_delay"
+                            android:textSize="20dp" />
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/power_execution_delay_et"
+                                android:inputType="number"
+                                android:gravity="center"
+                                android:textSize="20dp"
+                                android:padding="15dp"
+                                android:background="@drawable/bg_start_game"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <EditText
+                android:id="@+id/power_desc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/bg_start_game"
+                android:gravity="top"
+                android:hint="@string/add_ability_desc_hint"
+                android:minHeight="200dp"
+                android:padding="15dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/submit_ability_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_check"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:backgroundTint="@android:color/white" />
+</RelativeLayout>

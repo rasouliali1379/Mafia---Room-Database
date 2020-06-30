@@ -1,0 +1,250 @@
+<resources>
+    <string name="app_name">God Assistant</string>
+    <string name="power_name_recyclerview_title">Power</string>
+    <string name="power_ratio_recyclerview_title">Per Turn</string>
+    <string name="add_ability_powers">Power</string>
+    <string name="add_ability_pick_power">Choose Power</string>
+    <string name="add_ability_power_per_day_title">Power Per</string>
+    <string name="add_ability_power_ratio_title">Power Ratio</string>
+    <string name="add_ability_desc_hint">Description</string>
+    <string name="add_role_name_title">Role Name</string>
+    <string name="add_role_type_title">Role Type</string>
+    <string name="add_role_ability_title">Abilities</string>
+    <string name="add_role_ability_picker">Add</string>
+    <string name="add_role_ability_picker_error">Add an ability please!</string>
+    <string name="start_game">Start Game</string>
+    <string name="roles">Roles</string>
+    <string name="add_power_name_title">Power Name</string>
+    <string name="add_power_night_title">For Days</string>
+    <string name="add_power_submit_title">Submit</string>
+    <string name="add_power_cancel_title">Cancel</string>
+    <string name="add_role_type_error_txt">Specify role type!</string>
+    <string name="add_ability_select_error">Choose a power!</string>
+    <string name="add_ability_activity_title">Add Ability</string>
+    <string name="ability_activity_title">Abilities</string>
+    <string name="add_role_activity_title">Add Role</string>
+    <string name="role_activity_title">Roles</string>
+    <string name="option_dialog_title">Choose one option</string>
+    <string name="role_item_name_title">"Role name : "</string>
+    <string name="role_item_type_title">"Role type : "</string>
+    <string name="role_item_work_time_title">"Work time : "</string>
+    <string name="power_detail_work_time_24">24 hours</string>
+    <string name="power_detail_work_time_days">Days</string>
+    <string name="power_detail_work_time_nights">Nights</string>
+    <string name="powers">"Powers : "</string>
+    <string name="name_required">Name required</string>
+    <string name="add">Add</string>
+    <string name="power_pay_day_error_title">One these fields are required</string>
+    <string name="choose_power">Choose a power</string>
+    <string name="power_scale_error_txt">One of these fields are required</string>
+    <string name="player_name">Player Name</string>
+    <string name="add_players_title">"Add Players"</string>
+    <string name="players_required">" players is required"</string>
+    <string name="player_required">" more player is required"</string>
+    <string name="submit_players_btn_title">Submit players</string>
+    <string name="role_assignment_activity_title">Assignment</string>
+    <string name="submit">Submit</string>
+    <string name="edit_role_activity_title">Edit Role</string>
+    <string name="relation_error">Unable to delete , some of abilities still using this power!</string>
+    <string name="priority">"Priority"</string>
+    <string name="tap_to_reveal">Tap to see your role</string>
+    <string name="role_presentation_title">Role Presentation</string>
+    <string name="main_container_player_name">"Player name : "</string>
+    <string name="main_container_role_name">"Role name : "</string>
+    <string name="main_container_role_type">"Role type : "</string>
+    <string name="start">Start</string>
+    <string name="role_presentation_alert">You should present all the roles to start the game</string>
+    <string name="eliminated_players">Eliminated</string>
+    <string name="night_events">Night Events</string>
+    <string name="announce_night">Announce Night</string>
+    <string name="announce_day">Announce Day</string>
+    <string name="remaining_players">Remaining Players</string>
+    <string name="day">Day</string>
+    <string name="no_event">"No event "</string>
+    <string name="day_events">Day Events</string>
+    <string name="day_event_dialog_title">Day Events</string>
+    <string name="night">Night</string>
+    <string name="game_over">Game over</string>
+    <string name="mafia_won">Mafia won the game</string>
+    <string name="civil_won">Civil won the game</string>
+    <string name="exit_game">Exit</string>
+    <string name="role_assignment_label_role_name">Role name</string>
+    <string name="night_roles">Night roles</string>
+    <string name="day_roles">Day Roles</string>
+
+    <string-array name="spinner_example">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </string-array>
+
+    <string-array name="options">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+
+    <string-array name="timeset">
+        <item>Day</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="conditions">
+        <item>Role Type condition</item>
+        <item>Role condition</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Persian</item>
+    </string-array>
+
+    <string-array name="action_types">
+        <item>Delete</item>
+        <item>Temporary Delete</item>
+        <item>Suicide</item>
+        <item>Change Role</item>
+        <item>Change Power</item>
+        <item>Increase Power</item>
+        <item>Decrease Power</item>
+        <item>Remove Power</item>
+        <item>Force Shield (Night)</item>
+        <item>Force Shield (Day)</item>
+        <item>Shield</item>
+        <item>Self Safe</item>
+        <item>Change Role Type</item>
+        <item>Copy Ability</item>
+        <item>Mirror</item>
+        <item>Nothing</item>
+    </string-array>
+
+    <string-array name="day_players_options">
+        <item>Use Power</item>
+        <item>Player Information</item>
+        <item>God Abilities</item>
+    </string-array>
+
+
+    <string name="reset">Reset</string>
+    <string name="add_remain_roles">You need more roles. If you push \'Yes\' , mafia and civil will be added as much as you need. Do you want to proceed?</string>
+    <string name="attention">Attention</string>
+    <string name="yes">Yes</string>
+    <string name="define_starter_randomly">Define starter player randomly?</string>
+    <string name="starter_player">Starter Player</string>
+    <string name="define_starter_manually">Define starter player manually</string>
+    <string name="language">Language</string>
+    <string name="change_language">Change language</string>
+    <string name="settings_activity_title">Settings</string>
+
+    <string name="players">Players</string>
+    <string name="power_action_label">Power Action</string>
+    <string name="power_action_define_tv">Define Action</string>
+    <string name="ability">"Ability : "</string>
+    <string name="action_type">Type</string>
+    <string name="action_types_title">Choose an action</string>
+    <string name="action_activity_title">Actions</string>
+    <string name="action_type_delete_desc">Drop out Player from game</string>
+    <string name="action_type_change_role_desc">change player\'s role to another role</string>
+    <string name="action_type_change_power_desc">Change role\'s power to another one</string>
+    <string name="action_type_increase_power_desc">Increase count of role power</string>
+    <string name="action_type_decrease_power_desc">Decrease count of role power</string>
+    <string name="action_type_remove_desc">Remove role power</string>
+    <string name="add_action_change_role_to">Change role to</string>
+    <string name="delete_action">Delete Action</string>
+    <string name="change_role_action">Change Role Action</string>
+    <string name="add_action">Add Action</string>
+    <string name="power_against">Power Against</string>
+    <string name="player_name_1">"Player Name : "</string>
+    <string name="player_role">"Player Role : "</string>
+    <string name="player_status">"Status : "</string>
+    <string name="player_powers">"Powers : "</string>
+    <string name="status_dead">Dead</string>
+    <string name="status_alive">Alive</string>
+    <string name="ok">Ok</string>
+    <string name="status">"Status : "</string>
+    <string name="avaible_abilities">Avaible Abilities</string>
+
+    <string name="can_not_check_more">"You can only check "</string>
+    <string name="players_lowercase">players</string>
+    <string name="condition_item_title">Condition</string>
+    <string name="must_include">"Must include "</string>
+    <string name="none">None</string>
+    <string name="action_type_suicide_desc">Player kills him/herself by using power</string>
+    <string name="all_events">All events</string>
+    <string name="recent_events">Recent events</string>
+    <string name="used_power">" used his/her power ( "</string>
+    <string name="used_on">" ) on "</string>
+    <string name="declined_by_conditions">but couldn\'t pass the conditions</string>
+    <string name="ability_repulsed">"but unfortunatly repulsed by  "</string>
+    <string name="game_in_progress">There is a game in progress , do you want to countinue that game?</string>
+    <string name="no_btn_label">No</string>
+    <string name="remainig_civil">"Civil : "</string>
+    <string name="remainig_mafia">"Mafia : "</string>
+    <string name="define_round">Define round</string>
+    <string name="define_round_day_error">Enter a natural number</string>
+    <string name="and">" and "</string>
+    <string name="comma">", "</string>
+    <string name="edit_ability_title">Edit Ability</string>
+    <string name="action_defined">" action definied"</string>
+    <string name="actions_defined">" actions defined"</string>
+    <string name="select_condition_warning">Select a condition first</string>
+    <string name="add_condition_warning">Add a condition first</string>
+    <string name="edit_action_title">Edit Action</string>
+    <string name="add_condition">Add Condition</string>
+    <string name="unable_delete_deafault_roles">Unable to delete deafault roles!</string>
+    <string name="no_abilities_found">No abilities found</string>
+    <string name="add_action_target_ability">Target Ability</string>
+    <string name="add_action_change_ability_to">Change ability to</string>
+    <string name="add_action_reduction_rate">Reduction rate</string>
+    <string name="add_action_increase_rate">Increase rate</string>
+    <string name="nothing_found">Nothing found</string>
+    <string name="player_remaining">Pass all the players to announce night</string>
+    <string name="fill_manual_et_error">Fill this box</string>
+    <string name="round_starts">"Round starts at "</string>
+    <string name="kind_condition">Role type condition</string>
+    <string name="role_condition">Role condition</string>
+    <string name="role_type_must_be">"Role type must be "</string>
+    <string name="mafia_lowercase">mafia</string>
+    <string name="civil_lowercase">civil</string>
+    <string name="independent_lowercase">independent</string>
+    <string name="bashad">باشد</string>
+    <string name="add_ability_health">Power Health</string>
+    <string name="add_ability_day_coefficient">Ratio</string>
+    <string name="add_ability_execution_delay">Execution delay</string>
+    <string name="power_health_et_error">Enter a natural number</string>
+    <string name="action_type_actNone_desc">No action will be executed</string>
+    <string name="action_type_always_safe_night_desc">Completely bulletproof at nights</string>
+    <string name="action_type_always_safe_day_desc">Completely bulletproof at days</string>
+
+    <string name="action_type_regular_safe_desc">Makes players immortal for period of rounds</string>
+    <string name="action_type_self_safe_desc">Self safe</string>
+    <string name="action_type_change_role_type_desc">Change role type</string>
+    <string name="add_action_shield_label">Shield</string>
+    <string name="add_action_self_safe_label">Self Safe</string>
+    <string name="add_action_change_role_type">Change role type</string>
+    <string name="add_action_change_role_error">Choose a role!</string>
+    <string name="add_action_target_ability_error">Choose an ability!</string>
+    <string name="choose_role">Choose role</string>
+    <string name="mafia_uppercase">Simple Mafia</string>
+    <string name="civil_uppercase">Simple Civil</string>
+
+    <string name="player_info">Player Info</string>
+    <string name="game_in_progress_roles">A game is in progress if you want to access the roles you need to finish the game or by pressing \"yes\" the game will stop and all saved data will be deleted. Do you want to proceed to roles section?</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="delete_role_warning">Are you sure about deleting this role?</string>
+    <string name="all_players">"All players : "</string>
+    <string name="by_default">By default</string>
+    <string name="default_uppercase">Default</string>
+    <string name="role_deficiency_error">You need to at least add one role to start the game!</string>
+    <string name="choose_some_player">Choose some player to use the power</string>
+    <string name="choose_ability">Choose an ability</string>
+    <string name="choose_players">"Your choices : "</string>
+    <string name="exit_game_message">Do you want to exit the game?</string>
+    <string name="rounds">round/s</string>
+    <string name="settings_god_ability_label">God Abilities</string>
+    <string name="settings_common_ability_label">Common Ability</string>
+    <string name="action_type_delete_temp_desc">Player will be out of game for a defined period</string>
+    <string name="action_type_copy_ability_desc">"Player will share his/her power to the player that he targeted on "</string>
+    <string name="action_type_mirror_desc">Mirrors effect of the power on the caused player</string>
+
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_start_game"
+    android:padding="12dp"
+    android:layout_margin="10dp">
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/ability_name_txt"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Sample Text"/>
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/ability_ratio_txt"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="1/5"/>
+
+</LinearLayout>

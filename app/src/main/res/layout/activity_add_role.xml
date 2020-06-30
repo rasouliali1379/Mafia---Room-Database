@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".AddRoleActivity">
+    <LinearLayout
+        android:id="@+id/role_name_layout"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_role_name_title"/>
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/role_name_txt"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_start_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/role_name_layout"
+        android:id="@+id/role_type_layout"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_role_type_title"/>
+        <Spinner
+            android:padding="15dp"
+            android:id="@+id/role_type_spinner"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_start_game"
+            android:dropDownVerticalOffset="10dp"
+            android:popupElevation="3dp"
+
+            android:entries="@array/spinner_example"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/role_type_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/role_type_layout"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        android:text="@string/add_role_type_error_txt"/>
+
+    <LinearLayout
+        android:layout_below="@id/role_type_error"
+        android:id="@+id/role_ability_layout"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_role_ability_title"/>
+        <FrameLayout
+            android:layout_weight="1"
+            android:id="@+id/btn_select_ability"
+            android:background="@drawable/bg_start_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/add_role_ability_txt"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:text="@string/add_role_ability_picker" />
+        </FrameLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/ability_select_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/role_ability_layout"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        android:text="@string/add_role_ability_picker_error"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/submit_role_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_check"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:backgroundTint="@android:color/white" />
+
+</RelativeLayout>

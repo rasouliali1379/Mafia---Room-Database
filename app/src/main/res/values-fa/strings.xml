@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">دستیار راوی</string>
+    <string name="power_name_recyclerview_title">توانایی</string>
+    <string name="power_ratio_recyclerview_title">نسبت / تعداد در روز</string>
+    <string name="add_ability_powers">قدرت</string>
+    <string name="add_ability_pick_power">انتخاب توانایی</string>
+    <string name="add_ability_power_per_day_title">تعداد قدرت</string>
+    <string name="add_ability_power_ratio_title">نسبت قدرت</string>
+    <string name="add_ability_desc_hint">توضیحات</string>
+    <string name="add_role_name_title">نام نقش</string>
+    <string name="add_role_type_title">نوع نقش</string>
+    <string name="add_role_ability_title">توانایی ها</string>
+    <string name="add_role_ability_picker">اضافه کردن</string>
+    <string name="add_role_ability_picker_error">یک توانایی اضافه کنید!</string>
+    <string name="start_game">شروع بازی</string>
+    <string name="roles">نقش ها</string>
+    <string name="add_power_name_title">نام قدرت</string>
+    <string name="add_power_night_title">توانایی روز</string>
+    <string name="add_power_submit_title">ثبت</string>
+    <string name="add_power_cancel_title">انصراف</string>
+    <string name="add_role_type_error_txt">نوع شخصیت را مشخص کنید!</string>
+    <string name="add_ability_select_error">یک قدرت انتخاب کنید!</string>
+    <string name="add_ability_activity_title">اضافه کردن توانایی</string>
+    <string name="ability_activity_title">توانایی ها</string>
+    <string name="add_role_activity_title">اضافه کردن نقش</string>
+    <string name="role_activity_title">نقش ها</string>
+    <string name="option_dialog_title">انتخاب کنید</string>
+    <string name="role_item_name_title">"نام نقش : "</string>
+    <string name="role_item_type_title">"نوع نقش : "</string>
+    <string name="role_item_work_time_title">"ساعت کاری : "</string>
+    <string name="power_detail_work_time_24">24 ساعته</string>
+    <string name="power_detail_work_time_days">روز ها</string>
+    <string name="power_detail_work_time_nights">شب ها</string>
+    <string name="powers">"قدرت ها : "</string>
+    <string name="name_required">وارد کردن نام الزامیست!</string>
+    <string name="add">اضافه کردن</string>
+    <string name="power_pay_day_error_title">یکی از این دو را پر کنید!</string>
+    <string name="choose_power">انتخاب قدرت</string>
+    <string name="power_scale_error_txt">یکی از این دو را پر کنید!</string>
+    <string name="player_name">نام بازیکن</string>
+    <string name="add_players_title">"اضافه کردن بازیکن"</string>
+    <string name="players_required">" مورد نیاز است!"</string>
+    <string name="player_required">" بازیکن دیگر مورد نیاز است!"</string>
+    <string name="submit_players_btn_title">ثبت بازیکنان</string>
+    <string name="role_assignment_activity_title">انتساب نقش</string>
+    <string name="submit">ثبت</string>
+    <string name="edit_role_activity_title">ویرایش نقش</string>
+    <string name="relation_error">امکان پاک کردن وجود ندارد ، بعضی از توانایی ها از این قدرت در حال استفاده هستن!</string>
+    <string name="priority">"الویت"</string>
+    <string name="tap_to_reveal">برای مشاهده ی رول خود اینجا را لمس کنید</string>
+    <string name="role_presentation_title">ارائه ی نقش ها</string>
+    <string name="main_container_player_name">" نام بازیکن : "</string>
+    <string name="main_container_role_name">"نام نقش : "</string>
+    <string name="main_container_role_type">"نوع نقش : "</string>
+    <string name="start">شروع</string>
+    <string name="role_presentation_alert">برای شروع بازی تمامی نقش ها باید به بازیکن ارائه شوند!</string>
+    <string name="eliminated_players">حذف شده</string>
+    <string name="night_events">اتفاقات شب</string>
+    <string name="announce_night">اعلام شب</string>
+    <string name="announce_day">اعلام روز</string>
+    <string name="remaining_players">بازیکنان باقیمانده</string>
+    <string name="day">روز</string>
+    <string name="no_event">"هیچ اتفاقی ثبت نشده"</string>
+    <string name="day_events">اتفاقات روز</string>
+    <string name="day_event_dialog_title">اتفاقات روز</string>
+    <string name="night">شب</string>
+    <string name="game_over">پایان بازی!</string>
+    <string name="mafia_won">مافیا برنده شد!</string>
+    <string name="civil_won">شهروند برنده شد!</string>
+    <string name="exit_game">خروج</string>
+    <string name="role_assignment_label_role_name">نام نقش</string>
+    <string name="night_roles">نقش های شب</string>
+    <string name="day_roles">نقش های روز</string>
+    <string name="reset">تنظیم مجدد</string>
+    <string name="add_remain_roles">شما به نقش های بیشتری نیاز دارید. با قشردن بله نقش های مافیا و شهروند ساده به میزان لازم اضافه خواهند شد. آیا موافقید؟</string>
+    <string name="attention">توجه!</string>
+    <string name="yes">بله</string>
+    <string name="define_starter_randomly">انتخاب بازیکن شروع کننده به صورت اتفاقی؟</string>
+    <string name="starter_player">بازیکن شروع کننده</string>
+    <string name="define_starter_manually">انتخاب بازیکن شروع کننده به صورت الگویی</string>
+    <string name="language">زبان</string>
+    <string name="change_language">عوض کردن زبان</string>
+    <string name="settings_activity_title">تنظیمات</string>
+    <string name="players">بازیکنان</string>
+    <string name="power_action_label">کنش قدرت</string>
+    <string name="power_action_define_tv">تعریف کنش</string>
+    <string name="ability">"توانایی : "</string>
+    <string name="action_type">نوع</string>
+    <string name="action_types_title">انتخاب نوع کنش</string>
+    <string name="action_activity_title">کنش ها</string>
+    <string name="action_type_delete_desc">خارج کردن بازیکن از بازی</string>
+    <string name="action_type_change_role_desc">تعویض نقش بازیکن با نقضی دیگر</string>
+    <string name="action_type_change_power_desc">تعویض توانایی بازیکن با توانایی دیگر</string>
+    <string name="action_type_increase_power_desc">افزایش دغعات استفاده از توانایی نقش</string>
+    <string name="action_type_decrease_power_desc">کاهش دفعات استفاده از توانایی نقش</string>
+    <string name="action_type_remove_desc">حذف توانایی نقش</string>
+    <string name="add_action_change_role_to">تغییر نقش به</string>
+    <string name="delete_action">حذف کنش</string>
+    <string name="change_role_action">تغییر کنش نقش</string>
+    <string name="add_action">اضافه کردن کنش</string>
+    <string name="power_against">توانایی ضد</string>
+    <string name="player_name_1">"نام بازیکن : "</string>
+    <string name="player_role">"نقش بازیکن : "</string>
+    <string name="player_status">"وضعیت : "</string>
+    <string name="player_powers">"توانایی ها : "</string>
+    <string name="status_dead">مرده</string>
+    <string name="status_alive">زنده</string>
+    <string name="ok">باشه</string>
+    <string name="status">"وضعیت : "</string>
+    <string name="avaible_abilities">قدرت های در دسارس</string>
+    <string name="can_not_check_more">"شما فقط می توانید "</string>
+    <string name="players_lowercase">" بازیکن انتخاب کنید!"</string>
+    <string name="condition_item_title">شرط</string>
+    <string name="must_include">"مشمول "</string>
+    <string name="none">هیچ</string>
+    <string name="action_type_suicide_desc">بازیکن با استغاده از این قدرت خودش را م کشد</string>
+    <string name="all_events">تمام اتفاقات</string>
+    <string name="recent_events">اتفاقات اخیر</string>
+    <string name="used_power">" استفاده کرد از قدرتش ( "</string>
+    <string name="used_on">" ) روی "</string>
+    <string name="declined_by_conditions">ولی با شرط ها مطابقت نداشت</string>
+    <string name="ability_repulsed">"ولی متاسفانه دغع شد توسط "</string>
+    <string name="game_in_progress">یک بازی در حال جریان است ، تمایل به ادامه ی آن بازی دارید؟</string>
+    <string name="no_btn_label">خیر</string>
+    <string name="remainig_civil">"شهروند : "</string>
+    <string name="remainig_mafia">"مافیا : "</string>
+    <string name="define_round">تعریف دور</string>
+    <string name="define_round_day_error">یک عدد طبیعی وارد کنید!</string>
+    <string name="and">" و "</string>
+    <string name="comma">" ، "</string>
+    <string name="edit_ability_title">ویرایش توانایی</string>
+    <string name="action_defined">" کنش تعریف شد"</string>
+    <string name="actions_defined">" کنش تعریف شد"</string>
+    <string name="select_condition_warning">ابتدا یک شرط را مشخص کنید!</string>
+    <string name="add_condition_warning">ابتدا یک شرط اضافه کنید!</string>
+    <string name="edit_action_title">ویرایش کنش</string>
+    <string name="add_condition">اضافه کردن کنش</string>
+    <string name="unable_delete_deafault_roles">پاک کردن نقش های پیشفرض مقدور نیست!</string>
+    <string name="no_abilities_found">هیچ توانایی یافت نشد</string>
+    <string name="add_action_target_ability">توانایی هدف</string>
+    <string name="add_action_change_ability_to">تغییر توانایی به</string>
+    <string name="add_action_reduction_rate">میزان کاهش</string>
+    <string name="add_action_increase_rate">میزان افزایش</string>
+    <string name="nothing_found">هیچ چیز یافت نشد</string>
+    <string name="player_remaining">برای اغلام شب باید تمام بازیکنان را رد کنید!</string>
+    <string name="fill_manual_et_error">این قسمت را پر کنید!</string>
+    <string name="round_starts">"شروع دور از "</string>
+    <string name="kind_condition">شرط نوع</string>
+    <string name="role_condition">شرط نقش</string>
+    <string name="role_type_must_be">"نوع نقش باید جزو "</string>
+    <string name="mafia_lowercase">مافیا</string>
+    <string name="civil_lowercase">شهروند</string>
+    <string name="independent_lowercase">مستقل</string>
+    <string name="bashad">" باشد"</string>
+    <string name="add_ability_health">جان قدرت</string>
+    <string name="add_ability_day_coefficient">ضریب</string>
+    <string name="add_ability_execution_delay">تاخیر در اقدام</string>
+    <string name="power_health_et_error">یک عدد طبیعی وارد کنید</string>
+    <string name="action_type_actNone_desc">هیچ کنشی انجام نخواهد شد</string>
+    <string name="action_type_always_safe_night_desc">کاملا ضد گلوله در شب ها</string>
+    <string name="action_type_always_safe_day_desc">کاملا ضد گلوله در روز ها</string>
+    <string name="action_type_regular_safe_desc">بازیکنان را برای تعداد دور مشخص نامیرا می کند</string>
+    <string name="action_type_self_safe_desc">خود ایمنی</string>
+    <string name="action_type_change_role_type_desc">تغییر نوع نقش</string>
+    <string name="add_action_shield_label">سپر</string>
+    <string name="add_action_self_safe_label">خود ایمنی</string>
+    <string name="add_action_change_role_type">تغییر نوع نقش</string>
+    <string name="add_action_change_role_error">یک نقش انتخاب کنید!</string>
+    <string name="add_action_target_ability_error">یک توانایی انتخاب کنید!</string>
+    <string name="choose_role">انتخاب نقش</string>
+    <string name="mafia_uppercase">مافیای ساده</string>
+    <string name="civil_uppercase">شهروند ساده</string>
+    <string name="player_info">اطلاعات بازیکن</string>
+    <string name="game_in_progress_roles">در حال حاضر یک بازی در جریان است! برای دسترسی به نقش ها نیاز دارید بازی را به پایان برسانید یا با زدن دکمه ی \"بله\" به بازی پایان دهید که تمام اطلاعات ذخیره شده ی بازی پاک خواهد شد. آیا می خواهید به بخش نقش ها بروید؟</string>
+    <string name="please_wait">لطفا صبر کنید...</string>
+    <string name="delete_role_warning">آیا از پاک کردن این نقش اطمینان دارید؟</string>
+    <string name="all_players">"همه ی بازیکنان : "</string>
+    <string name="by_default">به صورت پیشفرض</string>
+    <string name="default_uppercase">پیشفرض</string>
+    <string name="role_deficiency_error">برای شروع بازی باید حداقل یک نقش اضافه کنید!</string>
+    <string name="choose_some_player">برای استفاده از قدرت یک یا چند بازیکن انتخاب کنید</string>
+    <string name="choose_ability">یک توانایی انتخاب کنید</string>
+    <string name="choose_players">"تعداد انتخاب شما : "</string>
+    <string name="exit_game_message">آیا می خواهید از بازی خارج شوید؟</string>
+    <string name="rounds">round/s</string>
+    <string name="settings_god_ability_label">God Abilities</string>
+    <string name="settings_common_ability_label">Common Ability</string>
+    <string name="action_type_delete_temp_desc">Player will be out of game for a defined period</string>
+    <string name="action_type_copy_ability_desc">"Player will share his/her power to the player that he targeted on "</string>
+    <string name="action_type_mirror_desc">Mirrors effect of the power on the caused player</string>
+
+    <string-array name="timeset">
+        <item>روز</item>
+        <item>شب</item>
+    </string-array>
+
+    <string-array name="conditions">
+        <item>شرط نوع نقش</item>
+        <item>شرط نقش</item>
+    </string-array>
+
+    <string-array name="options">
+        <item>ویرایش</item>
+        <item>حذف</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>انگلیسی</item>
+        <item>فارسی</item>
+    </string-array>
+
+    <string-array name="action_types">
+        <item>حذف</item>
+        <item>خودکشی</item>
+        <item>تغییر نقش</item>
+        <item>تعویض توانایی</item>
+        <item>افزایش توانایی</item>
+        <item>کاهش توانایی</item>
+        <item>حذف توانایی</item>
+        <item>سپر نیرو (شبها)</item>
+        <item>سپر نیرو (روزها)</item>
+        <item>سپر</item>
+        <item>خود ایمنی</item>
+        <item>تعویض نوع نقش</item>
+        <item>کنش پوچ</item>
+    </string-array>
+
+    <string-array name="day_players_options">
+        <item>استفاده ار توانایی</item>
+        <item>اطاعات بازیکن</item>
+    </string-array>
+</resources>
