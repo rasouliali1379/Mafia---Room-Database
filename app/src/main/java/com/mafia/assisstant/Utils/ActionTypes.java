@@ -37,7 +37,6 @@ public class ActionTypes {
         actionTypes.add(new ActionTypesDataHolder(15, types[14], context.getResources().getString(R.string.action_type_mirror_desc)));
         actionTypes.add(new ActionTypesDataHolder(16, types[15], context.getResources().getString(R.string.action_type_actNone_desc)));
 
-        //Todo 15- add actNone - alwaysSafeDay - alwaysSafeNight - regularSafe - selfSafe - changeRoleType
         return actionTypes;
     }
 }

@@ -209,7 +209,6 @@ public class AddActionActivity extends AppCompatActivity {
                 decreasePower = false;
                 break;
             case 5:
-                //Todo 7- removePower increasePower decreasePower need to have define ability
                 rewardPowerEnviroment(DECREASE_POWER);
                 decreasePower = true;
                 break;
@@ -252,7 +251,6 @@ public class AddActionActivity extends AppCompatActivity {
     }
 
     private void rewardPowerEnviroment(int which) {
-        //Todo 6- seprate decrease power from increase power
         rewardLayout.setVisibility(View.VISIBLE);
         switch (which){
             case 1:
@@ -345,7 +343,6 @@ public class AddActionActivity extends AppCompatActivity {
 
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //Todo  4- Show powers that related to the role
         switch (wichAdapter){
             case POWER_LIST_ADAPTER:
                 AbilityListAdapter abilityListAdapter;

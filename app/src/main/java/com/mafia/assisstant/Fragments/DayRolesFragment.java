@@ -42,7 +42,6 @@ public class DayRolesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(dayListAdapter);
         dayListAdapter.changePriority();
-        //Todo 12- priorities for day roles
         return view;
     }
 

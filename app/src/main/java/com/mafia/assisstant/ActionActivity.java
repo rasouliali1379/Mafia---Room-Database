@@ -44,9 +44,6 @@ public class ActionActivity extends AppCompatActivity {
     ConditionViewModel conditionViewModel;
     KindViewModel kindViewModel;
 
-    @BindView(R.id.conditions_recyclerview)RecyclerView recyclerView;
-    @BindView(R.id.add_condtion_btn)LinearLayout addConditionBtn;
-
     private int AbilityId;
     private List<RoleDataHolder> roles;
     ConditionListAdapter conditionListAdapter;
@@ -72,46 +69,16 @@ public class ActionActivity extends AppCompatActivity {
                     kindViewModel.getAll().observe(this, kinds -> {
                         if(kinds != null){
                             this.kinds = kinds;
-                            setupRecyclerview();
                         }
                     });
                 }
             });
         }
 
-        //Todo 13- add kind condition
-        //Todo 19- change wrong names
-        addConditionBtn.setOnClickListener(v-> showOptionsDialog());
 
         if(MainActivity.progressDialog.isShowing()){
             MainActivity.progressDialog.dismiss();
         }
-    }
-
-    private void showOptionsDialog() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.action_types_title));
-        builder.setItems(R.array.conditions , (DialogInterface dialog, int which) -> {
-            int priority;
-            if (conditions.size() > 1){
-                priority = conditions.get(conditions.size() - 1).getPriority();
-            } else {
-                priority = 1;
-            }
-            switch (which){
-                case 0:
-
-                    conditionViewModel.insert(new ConditionDataholder(AbilityId, true, priority));
-                    break;
-                case 1:
-                  conditionViewModel.insert(new ConditionDataholder(AbilityId, false, priority));
-                    break;
-            }
-            selectedConditionId = -1;
-        });
-        builder.create();
-        builder.show();
     }
 
     private void viewModelsSetup() {
@@ -121,76 +88,23 @@ public class ActionActivity extends AppCompatActivity {
         kindViewModel = new ViewModelProvider(this).get(KindViewModel.class);
     }
 
-    private void setupRecyclerview() {
-        conditionListAdapter = new ConditionListAdapter(this, AbilityId, roles, kinds, actionViewModel, conditionViewModel, position -> setItemSelected(position));
-        ItemTouchHelper.Callback dayCallback = new ConditionsTouchHelperCallBack(conditionListAdapter);
-        ItemTouchHelper dayTouchHelper = new ItemTouchHelper(dayCallback);
-        dayTouchHelper.attachToRecyclerView(recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(conditionListAdapter);
-        conditionViewModel.getByAbilityId(AbilityId).observe(this, conditions -> {
-            if (conditions != null){
-                conditionsSize = conditions.size();
-                this.conditions = sortConditionsByPriority(conditions);
-                conditionListAdapter.setData(this.conditions);
-                conditionListAdapter.changePriority();
-            }
-        });
-    }
-
-    private List<ConditionDataholder> sortConditionsByPriority(List<ConditionDataholder> conditions) {
-        for (int i = 0; i < conditions.size(); i++){
-            if (i + 1 != conditions.size()){
-                if (conditions.get(i).getPriority() > conditions.get(i + 1).getPriority()) {
-                    Collections.swap(conditions, i, i + 1);
-                    i = 0;
-                }
-            }
-        }
-        return conditions;
-    }
-
-    private void setItemSelected(int position) {
-        conditionListAdapter.conditions.get(position).setSelected(true);
-        selectedConditionId = conditionListAdapter.conditions.get(position).getId();
-        conditionListAdapter.notifyItemChanged(position);
-
-        for (int i = 0; i < conditionListAdapter.conditions.size(); i++){
-            if (conditionListAdapter.conditions.get(i).isSelected() && i != position){
-                conditionListAdapter.conditions.get(i).setSelected(false);
-            }
-        }
-        conditionListAdapter.notifyDataSetChanged();
-    }
-
-    @OnClick(R.id.add_action_fab)void addAction(){
-        if(selectedConditionId > 0){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.action_types_title));
-            builder.setItems(R.array.action_types , (DialogInterface dialog, int which) -> {
-                if (which == 0 || which == 1 || which == 6 || which == 7 || which == 8 || which == 12){
-                    ActionDataHolder action = new ActionDataHolder();
-                    action.setAbilityId(AbilityId);
-                    action.setConditionId(selectedConditionId);
-                    action.setActionTypeId(which + 1);
-                    actionViewModel.insert(action);
-                } else {
-                    Intent intent = new Intent(this , AddActionActivity.class);
-                    intent.putExtra("action_type", which);
-                    intent.putExtra("ability_id", AbilityId);
-                    intent.putExtra("condition_id", selectedConditionId);
-                    startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            actionViewModel.getAll().observe(this, actions->{
+                if (actions != null){
+                    conditionViewModel.getAll().observe(this, conditions-> {
+                        if(conditions != null){
+                            deleteEmptyConditions(conditions, actions);
+                            finish();
+                        }
+                    });
                 }
             });
-            builder.create();
-            builder.show();
-        } else if (conditionsSize < 1){
-            Toast.makeText(this, getResources().getString(R.string.add_condition_warning),Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, getResources().getString(R.string.select_condition_warning),Toast.LENGTH_LONG).show();
         }
-
+        return super.onOptionsItemSelected(item);
     }
+
 
     private void deleteEmptyConditions(List<ConditionDataholder> conditions, List<ActionDataHolder> actions) {
         if (actions.size() < 1){
@@ -219,27 +133,6 @@ public class ActionActivity extends AppCompatActivity {
 
         return false;
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            //Todo 3- delete empty conditions
-            actionViewModel.getAll().observe(this, actions->{
-                if (actions != null){
-                    conditionViewModel.getAll().observe(this, conditions-> {
-                        if(conditions != null){
-                            deleteEmptyConditions(conditions, actions);
-                            finish();
-                        }
-                    });
-                }
-            });
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

@@ -66,7 +66,6 @@ public class AbilityActivity extends AppCompatActivity {
 
 
     private void recyclerViewSetup() {
-        //Todo 16- fix the drafts showing up in list
         CustomAdapter customAdapter = new CustomAdapter(this, ability -> showOptionsDialog(ability), powerViewModel);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(customAdapter);

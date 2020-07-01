@@ -105,7 +105,6 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
                     holder.conditionTxt.setText(context.getResources().getString(R.string.none));
                 }
             } else {
-                //Todo 18- role condition dialog fix everything that is wrong
                 if (condition.getIncludeRoles().length() > 0){
                     holder.conditionTxt.setText(getIncludedRoles(conditions.get(position).getIncludeRoles()));
                 } else {

@@ -106,11 +106,6 @@ public class MainBoardActivity extends AppCompatActivity {
         viewModelInit();
 
         setTitle(getResources().getString(R.string.day) + " " + dayCount);
-
-        //Todo 17- implement timeSet
-        //Todo 22- add all players count
-        //Todo 23- fix remaining players
-
     }
 
     private void viewModelInit() {

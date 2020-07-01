@@ -95,10 +95,6 @@ public class AddAbilityActivity extends AppCompatActivity {
         if (MainActivity.progressDialog.isShowing()){
             MainActivity.progressDialog.dismiss();
         }
-
-        //Todo 20- remove edit and erase for power against items
-        //Todo 21- remove selection btn for power against
-        //Todo 24- add by default
     }
 
     private void defineMode() {
@@ -245,7 +241,6 @@ public class AddAbilityActivity extends AppCompatActivity {
         });
     }
 
-    //Todo 10- fix error
     private TextWatcher powerPerDayTw = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -72,7 +72,6 @@ public class RolesActivity extends AppCompatActivity {
     }
 
     private void recyclerViewSetup() {
-        //Todo 19- Don't show simple roles
         RolesListAdapter rolesListAdapter = new RolesListAdapter(this, kinds, abilityViewModel, powerViewModel, roleViewModel);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(rolesListAdapter);

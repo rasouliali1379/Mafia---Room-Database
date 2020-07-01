@@ -53,8 +53,6 @@ public class AbilityDataHolder {
     @ColumnInfo(name = "Draft")
     boolean draft;
 
-    //Todo 14- add health & times & execution delay & protection
-
     public AbilityDataHolder() {
     }
 

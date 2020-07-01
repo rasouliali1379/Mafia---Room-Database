@@ -71,8 +71,6 @@ public class SettingsActivity extends AppCompatActivity {
         clickListeners();
         initViewModels();
         godAbilitySetup();
-        //Todo 8- persian language needed
-        //Todo 11- timeset
     }
 
     private void initViewModels() {
@@ -92,7 +90,6 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
 
-        //Todo 9- deafault should be random
         if (prefs.getBoolean("randomStarter", true)){
             randomStarter.setChecked(true);
             relativeLayout.setVisibility(View.GONE);

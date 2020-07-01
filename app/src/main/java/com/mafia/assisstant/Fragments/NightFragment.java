@@ -192,7 +192,6 @@ public class NightFragment extends Fragment {
     }
 
     private void recyclerViewSetup() {
-        //Todo 2- sort by priority
 
         nightListAdapter = new NightListAdapter(context, sortByPriority(checkDayRatio(nightPlayers)), roles);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));

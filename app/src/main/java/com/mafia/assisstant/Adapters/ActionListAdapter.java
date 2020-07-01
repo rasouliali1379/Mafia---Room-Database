@@ -52,7 +52,6 @@ public class ActionListAdapter extends RecyclerView.Adapter<ActionListAdapter.Vi
             holder.editBtn.setVisibility(View.INVISIBLE);
         } else {
             holder.editBtn.setOnClickListener(v -> editAction(position));
-            //Todo 5- edit has bug. fix it
             holder.editBtn.setVisibility(View.VISIBLE);
         }
         holder.earaseBtn.setOnClickListener(v -> earaseAction(position));
