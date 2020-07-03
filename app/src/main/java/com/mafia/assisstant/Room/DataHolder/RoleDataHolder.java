@@ -12,15 +12,13 @@ public class RoleDataHolder {
     @PrimaryKey(autoGenerate = true)
     int id;
 
-    @ColumnInfo(name = "roleKindId")
-    @NonNull
+    @ColumnInfo(name = "RoleKindId")
     int roleKindId;
 
-    @ColumnInfo(name = "roleName")
+    @ColumnInfo(name = "RoleName")
     String roleName;
 
-    @ColumnInfo(name = "draft")
-    @NonNull
+    @ColumnInfo(name = "Draft")
     boolean draft;
 
     @Ignore

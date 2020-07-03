@@ -246,5 +246,8 @@
     <string name="action_type_delete_temp_desc">Player will be out of game for a defined period</string>
     <string name="action_type_copy_ability_desc">"Player will share his/her power to the player that he targeted on "</string>
     <string name="action_type_mirror_desc">Mirrors effect of the power on the caused player</string>
+    <string name="action_on_target">Target</string>
+    <string name="action_on_self">Self</string>
+    <string name="action_on_others">Others</string>
 
 </resources>

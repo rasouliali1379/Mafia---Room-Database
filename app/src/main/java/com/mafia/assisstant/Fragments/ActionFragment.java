@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,18 +17,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mafia.assisstant.Adapters.ConditionListAdapter;
 import com.mafia.assisstant.AddActionActivity;
 import com.mafia.assisstant.Helpers.ConditionsTouchHelperCallBack;
 import com.mafia.assisstant.R;
 import com.mafia.assisstant.Room.DataHolder.ActionDataHolder;
 import com.mafia.assisstant.Room.DataHolder.ConditionDataholder;
-import com.mafia.assisstant.Room.ViewModel.ActionViewModel;
+import com.mafia.assisstant.Room.DataHolder.KindDataHolder;
+import com.mafia.assisstant.Room.DataHolder.RoleDataHolder;
 import com.mafia.assisstant.Room.ViewModel.ConditionViewModel;
-import com.mafia.assisstant.Room.ViewModel.KindViewModel;
-import com.mafia.assisstant.Room.ViewModel.RoleViewModel;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,53 +35,47 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ActionOnSelfFragment extends Fragment {
+public class ActionFragment extends Fragment {
 
-    @BindView(R.id.actions_on_self_recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.action_fragment_recyclerview)RecyclerView recyclerView;
+    @BindView(R.id.action_fragment_add_condition)LinearLayout addConditionBtn;
+    @BindView(R.id.action_fragment_add_action)FloatingActionButton addActionBtn;
 
-    Context context;
+    ConditionListAdapter conditionListAdapter;
+    int selectedConditionId;
+
+    private Context context;
+    private List<KindDataHolder> kinds;
+    private List<RoleDataHolder> roles;
+    private int AbilityId;
+    private int ActionGroup;
+    private ConditionViewModel conditionViewModel;
+
+    public ActionFragment(Context context, List<KindDataHolder> kinds, List<RoleDataHolder> roles, ConditionViewModel conditionViewModel, int AbilityId, int ActionGroup) {
+        this.context = context;
+        this.kinds = kinds;
+        this.roles = roles;
+        this.conditionViewModel = conditionViewModel;
+        this.AbilityId = AbilityId;
+        this.ActionGroup = ActionGroup;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_action_on_self, container, false);
+        View view = inflater.inflate(R.layout.fragment_action, container, false);
         ButterKnife.bind(this, view);
         setupRecyclerview();
         return view;
     }
 
-    @OnClick(R.id.action_on_target_add_condition) void addCondition (){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(getResources().getString(R.string.action_types_title));
-        builder.setItems(R.array.conditions , (DialogInterface dialog, int which) -> {
-            int priority;
-            if (conditions.size() > 1){
-                priority = conditions.get(conditions.size() - 1).getPriority();
-            } else {
-                priority = 1;
-            }
-            switch (which){
-                case 0:
-
-                    conditionViewModel.insert(new ConditionDataholder(AbilityId, true, priority));
-                    break;
-                case 1:
-                    conditionViewModel.insert(new ConditionDataholder(AbilityId, false, priority));
-                    break;
-            }
-            selectedConditionId = -1;
-        });
-        builder.create();
-        builder.show();
-    }
-
     private void setupRecyclerview() {
-        conditionListAdapter = new ConditionListAdapter(this, AbilityId, roles, kinds, actionViewModel, conditionViewModel, position -> setItemSelected(position));
+        conditionListAdapter = new ConditionListAdapter(context, AbilityId, roles, kinds, actionViewModel, conditionViewModel, position -> setItemSelected(position));
         ItemTouchHelper.Callback dayCallback = new ConditionsTouchHelperCallBack(conditionListAdapter);
         ItemTouchHelper dayTouchHelper = new ItemTouchHelper(dayCallback);
         dayTouchHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(conditionListAdapter);
-        conditionViewModel.getByAbilityId(AbilityId).observe(this, conditions -> {
+        conditionViewModel.getByAbilityId(AbilityId).observe(context, conditions -> {
             if (conditions != null){
                 conditionsSize = conditions.size();
                 this.conditions = sortConditionsByPriority(conditions);
@@ -118,7 +110,32 @@ public class ActionOnSelfFragment extends Fragment {
         conditionListAdapter.notifyDataSetChanged();
     }
 
-    @OnClick(R.id.add_action_fab)void addAction(){
+    @OnClick(R.id.action_fragment_add_condition) void addCondition (){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(getResources().getString(R.string.action_types_title));
+        builder.setItems(R.array.conditions , (DialogInterface dialog, int which) -> {
+            int priority;
+            if (conditions.size() > 1){
+                priority = conditions.get(conditions.size() - 1).getPriority();
+            } else {
+                priority = 1;
+            }
+            switch (which){
+                case 0:
+
+                    conditionViewModel.insert(new ConditionDataholder(AbilityId, true, priority));
+                    break;
+                case 1:
+                    conditionViewModel.insert(new ConditionDataholder(AbilityId, false, priority));
+                    break;
+            }
+            selectedConditionId = -1;
+        });
+        builder.create();
+        builder.show();
+    }
+
+    @OnClick(R.id.action_fragment_add_action)void addAction(){
         if(selectedConditionId > 0){
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle(getResources().getString(R.string.action_types_title));

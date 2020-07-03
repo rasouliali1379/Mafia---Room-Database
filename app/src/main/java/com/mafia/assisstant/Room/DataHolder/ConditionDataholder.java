@@ -10,7 +10,6 @@ import androidx.room.PrimaryKey;
 public class ConditionDataholder {
 
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     int id;
 
     @ColumnInfo(name = "AbilityId")
@@ -19,12 +18,14 @@ public class ConditionDataholder {
     @ColumnInfo(name = "IncludeRoles")
     String includeRoles;
 
-    @ColumnInfo(name = "kindCondition")
-    @NonNull
+    @ColumnInfo(name = "KindCondition")
     boolean kind;
 
-    @ColumnInfo(name = "priority")
+    @ColumnInfo(name = "Priority")
     int priority;
+
+    @ColumnInfo(name = "ActionGroup")
+    int actionGroup;
 
     @Ignore
     boolean selected;
@@ -86,5 +87,13 @@ public class ConditionDataholder {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public int getActionGroup() {
+        return actionGroup;
+    }
+
+    public void setActionGroup(int actionGroup) {
+        this.actionGroup = actionGroup;
     }
 }

@@ -1,24 +1,18 @@
 package com.mafia.assisstant;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.mafia.assisstant.Adapters.ConditionListAdapter;
 
-import com.mafia.assisstant.Helpers.ConditionsTouchHelperCallBack;
-import com.mafia.assisstant.Helpers.DayRolesTouchHelperCallback;
+import com.mafia.assisstant.Fragments.ActionFragment;
+import com.mafia.assisstant.Helpers.TabAdapter;
 import com.mafia.assisstant.Room.DataHolder.ActionDataHolder;
 import com.mafia.assisstant.Room.DataHolder.ConditionDataholder;
 import com.mafia.assisstant.Room.DataHolder.KindDataHolder;
@@ -27,15 +21,13 @@ import com.mafia.assisstant.Room.ViewModel.ActionViewModel;
 import com.mafia.assisstant.Room.ViewModel.ConditionViewModel;
 import com.mafia.assisstant.Room.ViewModel.KindViewModel;
 import com.mafia.assisstant.Room.ViewModel.RoleViewModel;
+import com.mafia.assisstant.Utils.Consts;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ActionActivity extends AppCompatActivity {
 
@@ -47,20 +39,22 @@ public class ActionActivity extends AppCompatActivity {
     private int AbilityId;
     private List<RoleDataHolder> roles;
     ConditionListAdapter conditionListAdapter;
-    int selectedConditionId = -1, conditionsSize = 0;
-    private List<ConditionDataholder> conditions;
     private List<KindDataHolder> kinds;
+
+    @BindView(R.id.actions_activity_tablayout) TabLayout tabLayout;
+    @BindView(R.id.actions_activity_tablayout) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(getResources().getString(R.string.action_activity_title));
         ButterKnife.bind(this);
-        Intent intent = getIntent();
         viewModelsSetup();
 
+        Intent intent = getIntent();
         if (intent.hasExtra("ability_id")){
             AbilityId = intent.getIntExtra("ability_id", 0);
             roleViewModel.getAll().observe(this, roles -> {
@@ -69,6 +63,7 @@ public class ActionActivity extends AppCompatActivity {
                     kindViewModel.getAll().observe(this, kinds -> {
                         if(kinds != null){
                             this.kinds = kinds;
+                            tabLayoutSetup();
                         }
                     });
                 }
@@ -81,6 +76,15 @@ public class ActionActivity extends AppCompatActivity {
         }
     }
 
+    private void tabLayoutSetup() {
+        TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.TARGET_ACTION_GROUP), getResources().getString(R.string.action_on_target));
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.SELF_ACTION_GROUP), getResources().getString(R.string.action_on_self));
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.OTHERS_ACTION_GROUP), getResources().getString(R.string.action_on_others));
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
     private void viewModelsSetup() {
         conditionViewModel = new ViewModelProvider(this).get(ConditionViewModel.class);
         roleViewModel = new ViewModelProvider(this).get(RoleViewModel.class);
@@ -91,27 +95,30 @@ public class ActionActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            actionViewModel.getAll().observe(this, actions->{
-                if (actions != null){
-                    conditionViewModel.getAll().observe(this, conditions-> {
-                        if(conditions != null){
-                            deleteEmptyConditions(conditions, actions);
-                            finish();
-                        }
-                    });
-                }
-            });
+            detectEmptyConditions();
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void detectEmptyConditions(){
+        actionViewModel.getAll().observe(this, actions->{
+            if (actions != null){
+                conditionViewModel.getAll().observe(this, conditions-> {
+                    if(conditions != null){
+                        deleteEmptyConditions(conditions, actions);
+                        finish();
+                    }
+                });
+            }
+        });
+    }
 
     private void deleteEmptyConditions(List<ConditionDataholder> conditions, List<ActionDataHolder> actions) {
         if (actions.size() < 1){
             conditionViewModel.deleteAll();
         } else {
             List<ConditionDataholder> empty_conditions = new ArrayList<>();
-            for (int i = 0; i < this.conditions.size(); i++){
+            for (int i = 0; i < conditions.size(); i++){
                 if (!hasAction(conditions.get(i).getId(), actions)){
                     empty_conditions.add(conditions.get(i));
                 }
@@ -136,16 +143,7 @@ public class ActionActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        actionViewModel.getAll().observe(this, actions->{
-            if (actions != null){
-                conditionViewModel.getAll().observe(this, conditions-> {
-                    if(conditions != null){
-                        deleteEmptyConditions(conditions, actions);
-                        finish();
-                    }
-                });
-            }
-        });
+        detectEmptyConditions();
     }
 
     @Override

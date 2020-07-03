@@ -10,7 +10,7 @@ public class KindDataHolder {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "kindName")
+    @ColumnInfo(name = "KindName")
     @NonNull
     private String kindName;
 
