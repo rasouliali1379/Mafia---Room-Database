@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import com.mafia.assisstant.Room.DataHolder.ActionDataHolder;
 import com.mafia.assisstant.Room.DataHolder.ConditionDataholder;
 import com.mafia.assisstant.Room.DataHolder.KindDataHolder;
 import com.mafia.assisstant.Room.DataHolder.RoleDataHolder;
+import com.mafia.assisstant.Room.ViewModel.ActionViewModel;
 import com.mafia.assisstant.Room.ViewModel.ConditionViewModel;
 
 import java.util.Collections;
@@ -38,26 +40,26 @@ import butterknife.OnClick;
 public class ActionFragment extends Fragment {
 
     @BindView(R.id.action_fragment_recyclerview)RecyclerView recyclerView;
-    @BindView(R.id.action_fragment_add_condition)LinearLayout addConditionBtn;
-    @BindView(R.id.action_fragment_add_action)FloatingActionButton addActionBtn;
 
     ConditionListAdapter conditionListAdapter;
-    int selectedConditionId;
 
     private Context context;
     private List<KindDataHolder> kinds;
     private List<RoleDataHolder> roles;
-    private int AbilityId;
-    private int ActionGroup;
+    private List<ConditionDataholder> conditions;
+    private int AbilityId, ActionGroup, conditionsSize, selectedConditionId;
     private ConditionViewModel conditionViewModel;
+    private ActionViewModel actionViewModel;
 
-    public ActionFragment(Context context, List<KindDataHolder> kinds, List<RoleDataHolder> roles, ConditionViewModel conditionViewModel, int AbilityId, int ActionGroup) {
+
+    public ActionFragment(Context context, List<KindDataHolder> kinds, List<RoleDataHolder> roles, ConditionViewModel conditionViewModel, ActionViewModel actionViewModel, int AbilityId, int ActionGroup) {
         this.context = context;
         this.kinds = kinds;
         this.roles = roles;
         this.conditionViewModel = conditionViewModel;
         this.AbilityId = AbilityId;
         this.ActionGroup = ActionGroup;
+        this.actionViewModel = actionViewModel;
     }
 
     @Override
@@ -75,7 +77,7 @@ public class ActionFragment extends Fragment {
         dayTouchHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(conditionListAdapter);
-        conditionViewModel.getByAbilityId(AbilityId).observe(context, conditions -> {
+        conditionViewModel.getByAbilityId(AbilityId).observe((LifecycleOwner) context, conditions -> {
             if (conditions != null){
                 conditionsSize = conditions.size();
                 this.conditions = sortConditionsByPriority(conditions);

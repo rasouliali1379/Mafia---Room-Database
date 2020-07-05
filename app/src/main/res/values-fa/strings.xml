@@ -173,7 +173,7 @@
     <string name="civil_uppercase">شهروند ساده</string>
     <string name="player_info">اطلاعات بازیکن</string>
     <string name="game_in_progress_roles">در حال حاضر یک بازی در جریان است! برای دسترسی به نقش ها نیاز دارید بازی را به پایان برسانید یا با زدن دکمه ی \"بله\" به بازی پایان دهید که تمام اطلاعات ذخیره شده ی بازی پاک خواهد شد. آیا می خواهید به بخش نقش ها بروید؟</string>
-    <string name="please_wait">لطفا صبر کنید...</string>
+    <string name="please_wait">لطفا صبر کنید…</string>
     <string name="delete_role_warning">آیا از پاک کردن این نقش اطمینان دارید؟</string>
     <string name="all_players">"همه ی بازیکنان : "</string>
     <string name="by_default">به صورت پیشفرض</string>
@@ -186,11 +186,9 @@
     <string name="rounds">round/s</string>
     <string name="settings_god_ability_label">God Abilities</string>
     <string name="settings_common_ability_label">Common Ability</string>
-    <string name="action_type_delete_temp_desc">Player will be out of game for a defined period</string>
-    <string name="action_type_copy_ability_desc">"Player will share his/her power to the player that he targeted on "</string>
-    <string name="action_type_mirror_desc">Mirrors effect of the power on the caused player</string>
-    <string name="action_on_target">Target</string>
-    <string name="action_on_self">Self</string>
+    <string name="action_on_target">هدف</string>
+    <string name="action_on_self">خود</string>
+    <string name="action_on_others">دیگران</string>
 
     <string-array name="timeset">
         <item>روز</item>
@@ -213,24 +211,21 @@
     </string-array>
 
     <string-array name="action_types">
+        <item>حفاظت</item>
+        <item>لفو رای گیری</item>
         <item>حذف</item>
-        <item>خودکشی</item>
-        <item>تغییر نقش</item>
-        <item>تعویض توانایی</item>
-        <item>افزایش توانایی</item>
-        <item>کاهش توانایی</item>
-        <item>حذف توانایی</item>
-        <item>سپر نیرو (شبها)</item>
-        <item>سپر نیرو (روزها)</item>
-        <item>سپر</item>
-        <item>خود ایمنی</item>
-        <item>تعویض نوع نقش</item>
-        <item>کنش پوچ</item>
+        <item>آگاه سازی</item>
+        <item>سلب رای</item>
+        <item>تغییر تعداد قدرت</item>
+        <item>حذف قدرت</item>
+        <item>تعییر نقش</item>
+        <item>هیچ</item>
     </string-array>
 
     <string-array name="day_players_options">
         <item>استفاده ار توانایی</item>
         <item>اطاعات بازیکن</item>
+        <item>توانایی های راوی</item>
     </string-array>
 
 </resources>

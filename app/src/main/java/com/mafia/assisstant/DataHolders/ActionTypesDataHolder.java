@@ -2,12 +2,11 @@ package com.mafia.assisstant.DataHolders;
 
 public class ActionTypesDataHolder {
     private int id;
-    String name, desc;
+    String name;
 
-    public ActionTypesDataHolder(int id, String name, String desc) {
+    public ActionTypesDataHolder(int id, String name) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
     }
 
     public int getId() {
@@ -18,7 +17,4 @@ public class ActionTypesDataHolder {
         return name;
     }
 
-    public String getDesc() {
-        return desc;
-    }
 }

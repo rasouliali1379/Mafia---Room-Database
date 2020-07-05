@@ -38,11 +38,10 @@ public class ActionActivity extends AppCompatActivity {
 
     private int AbilityId;
     private List<RoleDataHolder> roles;
-    ConditionListAdapter conditionListAdapter;
     private List<KindDataHolder> kinds;
 
     @BindView(R.id.actions_activity_tablayout) TabLayout tabLayout;
-    @BindView(R.id.actions_activity_tablayout) ViewPager viewPager;
+    @BindView(R.id.actions_activity_viewpager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +77,9 @@ public class ActionActivity extends AppCompatActivity {
 
     private void tabLayoutSetup() {
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.TARGET_ACTION_GROUP), getResources().getString(R.string.action_on_target));
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.SELF_ACTION_GROUP), getResources().getString(R.string.action_on_self));
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, AbilityId, Consts.OTHERS_ACTION_GROUP), getResources().getString(R.string.action_on_others));
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, actionViewModel, AbilityId, Consts.TARGET_ACTION_GROUP), getResources().getString(R.string.action_on_target));
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel,actionViewModel, AbilityId, Consts.SELF_ACTION_GROUP), getResources().getString(R.string.action_on_self));
+        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel,actionViewModel, AbilityId, Consts.OTHERS_ACTION_GROUP), getResources().getString(R.string.action_on_others));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -140,15 +139,10 @@ public class ActionActivity extends AppCompatActivity {
 
         return false;
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         detectEmptyConditions();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        conditionListAdapter.savePriorities();
     }
 }

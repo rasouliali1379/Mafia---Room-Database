@@ -100,22 +100,15 @@
     </string-array>
 
     <string-array name="action_types">
+        <item>Protection</item>
+        <item>Cancel voting</item>
         <item>Delete</item>
-        <item>Temporary Delete</item>
-        <item>Suicide</item>
+        <item>Notify</item>
+        <item>Vote Deprivation</item>
+        <item>Change Ability Count</item>
+        <item>Remove Ability</item>
         <item>Change Role</item>
-        <item>Change Power</item>
-        <item>Increase Power</item>
-        <item>Decrease Power</item>
-        <item>Remove Power</item>
-        <item>Force Shield (Night)</item>
-        <item>Force Shield (Day)</item>
-        <item>Shield</item>
-        <item>Self Safe</item>
-        <item>Change Role Type</item>
-        <item>Copy Ability</item>
-        <item>Mirror</item>
-        <item>Nothing</item>
+        <item>None</item>
     </string-array>
 
     <string-array name="day_players_options">
@@ -160,7 +153,7 @@
     <string name="player_powers">"Powers : "</string>
     <string name="status_dead">Dead</string>
     <string name="status_alive">Alive</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="status">"Status : "</string>
     <string name="avaible_abilities">Avaible Abilities</string>
 
@@ -175,7 +168,7 @@
     <string name="used_power">" used his/her power ( "</string>
     <string name="used_on">" ) on "</string>
     <string name="declined_by_conditions">but couldn\'t pass the conditions</string>
-    <string name="ability_repulsed">"but unfortunatly repulsed by  "</string>
+    <string name="ability_repulsed">"but unfortunately repulsed by  "</string>
     <string name="game_in_progress">There is a game in progress , do you want to countinue that game?</string>
     <string name="no_btn_label">No</string>
     <string name="remainig_civil">"Civil : "</string>
@@ -185,7 +178,7 @@
     <string name="and">" and "</string>
     <string name="comma">", "</string>
     <string name="edit_ability_title">Edit Ability</string>
-    <string name="action_defined">" action definied"</string>
+    <string name="action_defined">" action defined"</string>
     <string name="actions_defined">" actions defined"</string>
     <string name="select_condition_warning">Select a condition first</string>
     <string name="add_condition_warning">Add a condition first</string>
@@ -230,7 +223,7 @@
 
     <string name="player_info">Player Info</string>
     <string name="game_in_progress_roles">A game is in progress if you want to access the roles you need to finish the game or by pressing \"yes\" the game will stop and all saved data will be deleted. Do you want to proceed to roles section?</string>
-    <string name="please_wait">Please wait...</string>
+    <string name="please_wait">Please wait…</string>
     <string name="delete_role_warning">Are you sure about deleting this role?</string>
     <string name="all_players">"All players : "</string>
     <string name="by_default">By default</string>
@@ -243,9 +236,6 @@
     <string name="rounds">round/s</string>
     <string name="settings_god_ability_label">God Abilities</string>
     <string name="settings_common_ability_label">Common Ability</string>
-    <string name="action_type_delete_temp_desc">Player will be out of game for a defined period</string>
-    <string name="action_type_copy_ability_desc">"Player will share his/her power to the player that he targeted on "</string>
-    <string name="action_type_mirror_desc">Mirrors effect of the power on the caused player</string>
     <string name="action_on_target">Target</string>
     <string name="action_on_self">Self</string>
     <string name="action_on_others">Others</string>
