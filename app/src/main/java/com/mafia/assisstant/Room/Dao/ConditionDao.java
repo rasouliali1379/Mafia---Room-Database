@@ -23,6 +23,9 @@ public interface ConditionDao {
     @Query("SELECT * FROM tCondition WHERE AbilityId=:id")
     LiveData<List<ConditionDataholder>> getByAbilityId(int id);
 
+    @Query("SELECT * FROM tCondition WHERE AbilityId=:id AND Command=:cmd")
+    LiveData<List<ConditionDataholder>> getByAbilityIdAndCmd(int id, boolean cmd);
+
     @Update
     void update(ConditionDataholder condition);
 

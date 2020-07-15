@@ -189,6 +189,10 @@
     <string name="action_on_target">هدف</string>
     <string name="action_on_self">خود</string>
     <string name="action_on_others">دیگران</string>
+    <string name="increase">Increase</string>
+    <string name="decrease">Decrease</string>
+    <string name="effect_type">Effect Type</string>
+    <string name="count">Count</string>
 
     <string-array name="timeset">
         <item>روز</item>

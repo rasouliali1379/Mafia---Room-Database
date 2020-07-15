@@ -65,10 +65,19 @@
                 android:textColor="@color/colorAccent" />
 
         </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/actions_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <LinearLayout
+            android:background="@android:color/darker_gray"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/commands_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

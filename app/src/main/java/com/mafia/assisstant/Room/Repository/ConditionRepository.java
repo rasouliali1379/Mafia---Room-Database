@@ -27,6 +27,10 @@ public class ConditionRepository {
         return conditionDao.getByAbilityId(id);
     }
 
+    public LiveData<List<ConditionDataholder>> getByAbilityIdAndCmd(int id, boolean cmd) {
+        return conditionDao.getByAbilityIdAndCmd(id, cmd);
+    }
+
     public void insert(ConditionDataholder condition) {
         MafiaRoomDatabase.databaseWriteExecutor.execute(() -> conditionDao.insert(condition));
     }

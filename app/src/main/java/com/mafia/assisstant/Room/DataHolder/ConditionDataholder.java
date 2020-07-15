@@ -24,8 +24,8 @@ public class ConditionDataholder {
     @ColumnInfo(name = "Priority")
     int priority;
 
-    @ColumnInfo(name = "ActionGroup")
-    int actionGroup;
+    @ColumnInfo(name = "Command")
+    boolean command;
 
     @Ignore
     boolean selected;
@@ -35,10 +35,11 @@ public class ConditionDataholder {
     public ConditionDataholder() {
     }
 
-    public  ConditionDataholder(int abilityId, boolean kind, int priority) {
+    public  ConditionDataholder(int abilityId, boolean kind, int priority, boolean command) {
         this.abilityId = abilityId;
         this.kind = kind;
         this.priority = priority;
+        this.command = command;
     }
 
     public int getId() {
@@ -89,11 +90,11 @@ public class ConditionDataholder {
         this.priority = priority;
     }
 
-    public int getActionGroup() {
-        return actionGroup;
+    public boolean isCommand() {
+        return command;
     }
 
-    public void setActionGroup(int actionGroup) {
-        this.actionGroup = actionGroup;
+    public void setCommand(boolean command) {
+        this.command = command;
     }
 }

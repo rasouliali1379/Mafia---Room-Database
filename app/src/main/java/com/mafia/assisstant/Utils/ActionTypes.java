@@ -21,6 +21,14 @@ public class ActionTypes {
         String[] types = context.getResources().getStringArray(R.array.action_types);
         actionTypes = new ArrayList<>();
         actionTypes.add(new ActionTypesDataHolder(1, types[0]));
+        actionTypes.add(new ActionTypesDataHolder(2, types[1]));
+        actionTypes.add(new ActionTypesDataHolder(3, types[2]));
+        actionTypes.add(new ActionTypesDataHolder(4, types[3]));
+        actionTypes.add(new ActionTypesDataHolder(5, types[4]));
+        actionTypes.add(new ActionTypesDataHolder(6, types[5]));
+        actionTypes.add(new ActionTypesDataHolder(7, types[6]));
+        actionTypes.add(new ActionTypesDataHolder(8, types[7]));
+        actionTypes.add(new ActionTypesDataHolder(9, types[8]));
 
         return actionTypes;
     }

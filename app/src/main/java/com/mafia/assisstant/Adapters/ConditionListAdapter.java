@@ -27,6 +27,7 @@ import com.mafia.assisstant.Room.DataHolder.KindDataHolder;
 import com.mafia.assisstant.Room.DataHolder.RoleDataHolder;
 import com.mafia.assisstant.Room.ViewModel.ActionViewModel;
 import com.mafia.assisstant.Room.ViewModel.ConditionViewModel;
+import com.mafia.assisstant.ViewModels.ActionActivityViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,7 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
 
     private ActionViewModel actionViewModel;
     private ConditionViewModel conditionViewModel;
+    private ActionActivityViewModel actionActivityViewModel;
     private final OnItemClickListener listener;
     View view;
 
@@ -55,12 +57,14 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
                                 List<RoleDataHolder> roles,
                                 List<KindDataHolder> kinds,
                                 ActionViewModel actionViewModel,
+                                ActionActivityViewModel actionActivityViewModel,
                                 ConditionViewModel conditionViewModel,
                                 OnItemClickListener listener) {
         this.context = context;
         AbilityId = abilityId;
         this.roles = roles;
         this.kinds = kinds;
+        this.actionActivityViewModel = actionActivityViewModel;
         this.actionViewModel = actionViewModel;
         this.conditionViewModel = conditionViewModel;
         this.listener = listener;
@@ -86,16 +90,20 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
         }
 
         holder.priority.setText(String.valueOf(condition.getPriority()));
-        if(condition.isSelected()){
-            holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorGreen));
-            holder.conditionTxt.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.conditionItemTitle.setTextColor(context.getResources().getColor(R.color.colorPrimary));
 
-        } else {
-            holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.conditionTxt.setTextColor(context.getResources().getColor(R.color.colorAccent));
-            holder.conditionItemTitle.setTextColor(context.getResources().getColor(R.color.colorAccent));
-        }
+        actionActivityViewModel.getSelectedCondition().observe((LifecycleOwner) context, selected -> {
+
+            if(selected == position){
+                holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorGreen));
+                holder.conditionTxt.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+                holder.conditionItemTitle.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+            } else {
+                holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+                holder.conditionTxt.setTextColor(context.getResources().getColor(R.color.colorAccent));
+                holder.conditionItemTitle.setTextColor(context.getResources().getColor(R.color.colorAccent));
+            }
+        });
+
 
         if(condition.getIncludeRoles() != null){
             if (condition.isKind()){

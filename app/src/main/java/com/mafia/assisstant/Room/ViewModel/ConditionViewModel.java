@@ -27,6 +27,10 @@ public class ConditionViewModel extends AndroidViewModel {
         return mRepository.getByAbilityId(id);
     }
 
+    public LiveData<List<ConditionDataholder>> getByAbilityIdAndCmd(int id, boolean cmd) {
+        return mRepository.getByAbilityIdAndCmd(id, cmd);
+    }
+
     public void insert(ConditionDataholder condition) {
         mRepository.insert(condition);
     }

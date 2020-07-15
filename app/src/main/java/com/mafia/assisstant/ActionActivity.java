@@ -1,18 +1,22 @@
 package com.mafia.assisstant;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 import com.mafia.assisstant.Adapters.ConditionListAdapter;
 
-import com.mafia.assisstant.Fragments.ActionFragment;
-import com.mafia.assisstant.Helpers.TabAdapter;
+import com.mafia.assisstant.Helpers.ConditionsTouchHelperCallBack;
 import com.mafia.assisstant.Room.DataHolder.ActionDataHolder;
 import com.mafia.assisstant.Room.DataHolder.ConditionDataholder;
 import com.mafia.assisstant.Room.DataHolder.KindDataHolder;
@@ -22,12 +26,15 @@ import com.mafia.assisstant.Room.ViewModel.ConditionViewModel;
 import com.mafia.assisstant.Room.ViewModel.KindViewModel;
 import com.mafia.assisstant.Room.ViewModel.RoleViewModel;
 import com.mafia.assisstant.Utils.Consts;
+import com.mafia.assisstant.ViewModels.ActionActivityViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ActionActivity extends AppCompatActivity {
 
@@ -39,9 +46,12 @@ public class ActionActivity extends AppCompatActivity {
     private int AbilityId;
     private List<RoleDataHolder> roles;
     private List<KindDataHolder> kinds;
+    private List<ConditionDataholder> conditions;
+    private int conditionsSize, selectedConditionId;
+    private ActionActivityViewModel actionActivityViewModel;
+    ConditionListAdapter conditionListAdapter;
 
-    @BindView(R.id.actions_activity_tablayout) TabLayout tabLayout;
-    @BindView(R.id.actions_activity_viewpager) ViewPager viewPager;
+    @BindView(R.id.action_activity_recyclerview)RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +72,7 @@ public class ActionActivity extends AppCompatActivity {
                     kindViewModel.getAll().observe(this, kinds -> {
                         if(kinds != null){
                             this.kinds = kinds;
-                            tabLayoutSetup();
+
                         }
                     });
                 }
@@ -73,15 +83,6 @@ public class ActionActivity extends AppCompatActivity {
         if(MainActivity.progressDialog.isShowing()){
             MainActivity.progressDialog.dismiss();
         }
-    }
-
-    private void tabLayoutSetup() {
-        TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel, actionViewModel, AbilityId, Consts.TARGET_ACTION_GROUP), getResources().getString(R.string.action_on_target));
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel,actionViewModel, AbilityId, Consts.SELF_ACTION_GROUP), getResources().getString(R.string.action_on_self));
-        adapter.addFragment(new ActionFragment(this, kinds , roles, conditionViewModel,actionViewModel, AbilityId, Consts.OTHERS_ACTION_GROUP), getResources().getString(R.string.action_on_others));
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void viewModelsSetup() {
@@ -138,6 +139,93 @@ public class ActionActivity extends AppCompatActivity {
         }
 
         return false;
+    }
+
+    private void setupRecyclerview() {
+        conditionListAdapter = new ConditionListAdapter(this, AbilityId, roles, kinds, actionViewModel, actionActivityViewModel, conditionViewModel, position -> {
+            actionActivityViewModel.setSelectedCondition(position);
+            selectedConditionId = conditions.get(position).getId();
+        });
+        ItemTouchHelper.Callback dayCallback = new ConditionsTouchHelperCallBack(conditionListAdapter);
+        ItemTouchHelper dayTouchHelper = new ItemTouchHelper(dayCallback);
+        dayTouchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(conditionListAdapter);
+        conditionViewModel.getByAbilityIdAndCmd(AbilityId, Consts.CONDITION).observe((LifecycleOwner) this, conditions -> {
+            if (conditions != null){
+                conditionsSize = conditions.size();
+                this.conditions = sortConditionsByPriority(conditions);
+                conditionListAdapter.setData(this.conditions);
+                conditionListAdapter.changePriority();
+            }
+        });
+    }
+
+    private List<ConditionDataholder> sortConditionsByPriority(List<ConditionDataholder> conditions) {
+        for (int i = 0; i < conditions.size(); i++){
+            if (i + 1 != conditions.size()){
+                if (conditions.get(i).getPriority() > conditions.get(i + 1).getPriority()) {
+                    Collections.swap(conditions, i, i + 1);
+                    i = 0;
+                }
+            }
+        }
+        return conditions;
+    }
+
+    @OnClick(R.id.action_activity_add_condition) void addCondition (){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.action_types_title));
+        builder.setItems(R.array.conditions , (DialogInterface dialog, int which) -> {
+            int priority;
+            if (conditions.size() > 1){
+                priority = conditions.get(conditions.size() - 1).getPriority();
+            } else {
+                priority = 1;
+            }
+            switch (which){
+                case 0:
+                    conditionViewModel.insert(new ConditionDataholder(AbilityId, true, priority, false));
+                    break;
+                case 1:
+                    conditionViewModel.insert(new ConditionDataholder(AbilityId, false, priority, false));
+                    break;
+                case 2:
+                    conditionViewModel.insert(new ConditionDataholder(AbilityId, false, priority, true));
+                    break;
+            }
+            selectedConditionId = -1;
+        });
+        builder.create();
+        builder.show();
+    }
+
+    @OnClick(R.id.action_activity_add_action)void addAction(){
+        if(selectedConditionId > 0){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.action_types_title));
+            builder.setItems(R.array.action_types , (DialogInterface dialog, int which) -> {
+                if (which == 8){
+                    ActionDataHolder action = new ActionDataHolder();
+                    action.setAbilityId(AbilityId);
+                    action.setConditionId(selectedConditionId);
+                    action.setActionTypeId(which + 1);
+                    actionViewModel.insert(action);
+                } else {
+                    Intent intent = new Intent(this , AddActionActivity.class);
+                    intent.putExtra("action_type", which);
+                    intent.putExtra("ability_id", AbilityId);
+                    intent.putExtra("condition_id", selectedConditionId);
+                    startActivity(intent);
+                }
+            });
+            builder.create();
+            builder.show();
+        } else if (conditionsSize < 1){
+            Toast.makeText(this, getResources().getString(R.string.add_condition_warning),Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.select_condition_warning),Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
