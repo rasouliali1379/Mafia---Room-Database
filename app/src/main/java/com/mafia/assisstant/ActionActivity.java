@@ -57,12 +57,10 @@ public class ActionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(getResources().getString(R.string.action_activity_title));
         ButterKnife.bind(this);
         viewModelsSetup();
-
         Intent intent = getIntent();
         if (intent.hasExtra("ability_id")){
             AbilityId = intent.getIntExtra("ability_id", 0);
@@ -72,13 +70,12 @@ public class ActionActivity extends AppCompatActivity {
                     kindViewModel.getAll().observe(this, kinds -> {
                         if(kinds != null){
                             this.kinds = kinds;
-
+                            setupRecyclerview();
                         }
                     });
                 }
             });
         }
-
 
         if(MainActivity.progressDialog.isShowing()){
             MainActivity.progressDialog.dismiss();
@@ -151,7 +148,7 @@ public class ActionActivity extends AppCompatActivity {
         dayTouchHelper.attachToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(conditionListAdapter);
-        conditionViewModel.getByAbilityIdAndCmd(AbilityId, Consts.CONDITION).observe((LifecycleOwner) this, conditions -> {
+        conditionViewModel.getByAbilityIdAndCmd(AbilityId, Consts.CONDITION).observe( this, conditions -> {
             if (conditions != null){
                 conditionsSize = conditions.size();
                 this.conditions = sortConditionsByPriority(conditions);
@@ -173,7 +170,7 @@ public class ActionActivity extends AppCompatActivity {
         return conditions;
     }
 
-    @OnClick(R.id.action_activity_add_condition) void addCondition (){
+    @OnClick(R.id.action_activity_add_condition) void addCondition(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.action_types_title));
         builder.setItems(R.array.conditions , (DialogInterface dialog, int which) -> {
@@ -227,6 +224,8 @@ public class ActionActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.select_condition_warning),Toast.LENGTH_LONG).show();
         }
     }
+
+
 
     @Override
     public void onBackPressed() {

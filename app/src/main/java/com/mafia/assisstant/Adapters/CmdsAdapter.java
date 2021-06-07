@@ -1,22 +1,18 @@
 package com.mafia.assisstant.Adapters;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
-
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,7 +33,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdapter.ViewHolder> implements ItemTouchHelperAdapter {
+class CmdsAdapter  extends RecyclerView.Adapter<CmdsAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
     private Context context;
     private int AbilityId;
@@ -49,18 +45,18 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
     private ActionViewModel actionViewModel;
     private ConditionViewModel conditionViewModel;
     private ActionActivityViewModel actionActivityViewModel;
-    private final OnItemClickListener listener;
+    private final ConditionListAdapter.OnItemClickListener listener;
     View view;
 
     RolesCheckboxListAdapter rolesCheckboxListAdapter;
 
-    public ConditionListAdapter(Context context, int abilityId,
+    public CmdsAdapter(Context context, int abilityId,
                                 List<RoleDataHolder> roles,
                                 List<KindDataHolder> kinds,
                                 ActionViewModel actionViewModel,
                                 ActionActivityViewModel actionActivityViewModel,
                                 ConditionViewModel conditionViewModel,
-                                OnItemClickListener listener) {
+                                ConditionListAdapter.OnItemClickListener listener) {
         this.context = context;
         AbilityId = abilityId;
         this.roles = roles;
@@ -195,7 +191,7 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
         alertDialog.setOnDismissListener(dialog -> submitIncludedRoles(alertDialog, conditionPosition));
-        DialogVH holder = new DialogVH(dialogView);
+        ConditionListAdapter.DialogVH holder = new ConditionListAdapter.DialogVH(dialogView);
 
         rolesCheckboxListAdapter = new RolesCheckboxListAdapter(context , getNotDraftedRoles(roles) , position -> {
             roles.get(position).setChecked(!roles.get(position).isChecked());
@@ -278,8 +274,8 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
 
     static class DialogVH {
 
-        @BindView(R.id.checkbox_recyclerview) RecyclerView recyclerView;
-        @BindView(R.id.checkbox_dialog_close_btn) ImageView closeBtn;
+        @BindView(R.id.checkbox_recyclerview)RecyclerView recyclerView;
+        @BindView(R.id.checkbox_dialog_close_btn)ImageView closeBtn;
         @BindView(R.id.checkbox_dialog_title)TextView dialogTitle;
 
         DialogVH(View rootView) {
@@ -339,19 +335,19 @@ public class ConditionListAdapter extends RecyclerView.Adapter<ConditionListAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.condition_item_cv) CardView cardView;
+        @BindView(R.id.condition_item_cv)CardView cardView;
         @BindView(R.id.actions_recyclerview)RecyclerView recyclerView;
         @BindView(R.id.action_condition_txt)TextView conditionTxt;
         @BindView(R.id.condition_item_title)TextView conditionItemTitle;
         @BindView(R.id.condition_item_priority_txt)TextView priority;
-        @BindView(R.id.condition_item_seperator)LinearLayout seperator;
+        @BindView(R.id.condition_item_seperator) LinearLayout seperator;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this , itemView);
         }
 
-        public void bind(final int position, final OnItemClickListener listener) {
+        public void bind(final int position, final ConditionListAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener((View view)-> listener.onItemClick(position));
         }
     }

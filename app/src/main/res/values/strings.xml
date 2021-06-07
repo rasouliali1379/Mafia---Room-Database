@@ -117,6 +117,11 @@
         <item>God Abilities</item>
     </string-array>
 
+    <string-array name="">
+        <item>Use Power</item>
+        <item>Player Information</item>
+        <item>God Abilities</item>
+    </string-array>
 
     <string name="reset">Reset</string>
     <string name="add_remain_roles">You need more roles. If you push \'Yes\' , mafia and civil will be added as much as you need. Do you want to proceed?</string>
